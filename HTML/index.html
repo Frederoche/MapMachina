@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Map</title>
+    <link href="../CSS/map.css" rel="stylesheet"/>
+    <script src="../Javascript/Licence.js"></script>
+    <script src="../Javascript/Map.js"></script>
+    <script src="../Javascript/images.js"></script>
+    <script src="../Javascript/Viewport.js"></script>
+    <script src="../Javascript/node.js"></script>
+    <script src="../Javascript/Quadtree.js"></script>
+    <script src="../Javascript/Utility.js"></script>
+    <script src="../Javascript/Zoom.js"></script>
+    <script src="../Javascript/DOM.js"></script>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+<div id="map"></div>
+<div id="dots"></div>
+<script>
+    var bingServerTileUrl = 'http://t0.tiles.virtualearth.net/tiles/a{key}.jpeg?g=854&mkt=en-US&token=Anz84uRE1RULeLwuJ0qKu5amcu5rugRXy1vKc27wUaKVyIv1SVZrUjqaOfXJJoI0';
+    var osmServerTileUrl = 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png';
+
+    var map = new TileMapMachine.Map(bingServerTileUrl);
+</script>
+</body>
+</html>
