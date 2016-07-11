@@ -51,11 +51,6 @@
     this.appendImage = function(node) {
             var url = this._tileImageUrl(node);
 
-            if (node.img !== null && document.getElementById(node.key) !== null) {
-                node.img.src = url;
-                document.getElementById("map").appendChild(node.img);
-                return;
-            }
             
             var  img = this._createImage(node);
             

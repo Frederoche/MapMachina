@@ -139,14 +139,19 @@ TileMapMachine.Quadtree.prototype =
         node = node || this.RootNode;
         zoom = zoom || TileMapMachine.zoomLevel;
         
-        if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key))) {
+        if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img ===null) {
             this.Images.appendImage(node);
         }
+
+        if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img !== null)
+        {
+           document.getElementById("map").appendChild(node.img);
+        }
         
-        if (node.key.length === zoom && !this.Viewport._isInside(node.center, node.key, node.key)) {
+        if (node.key.length === zoom && !this.Viewport._isInside(node.center, node.key, node.key) && node.img !== null) {
             this.Images.removeImage(node);
-            //node.child = [];
-            //node.type = 0;
+            node.child = [];
+            node.type = 0;
         }
 
         if (node.key.length < zoom && node.img !== null) {
