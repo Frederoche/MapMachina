@@ -1,8 +1,9 @@
-﻿TileMapMachine.Images = function(url){
+﻿TileMapMachine.Images = function(url) {
 
     this.img = {},
     this.url = url,
-
+    this.count = 0,
+    
     this.removeImage = function (node)
     {
         if (node.img !== undefined) {
@@ -29,11 +30,27 @@
         }
     },
 
+    this._switchDomain = function(url)
+    {
+        if (this.count % 5 === 0) {
+            url = TileMapMachine.Utility._switchDomain(url);
+        }
+
+        this.count++;
+
+        if (this.count > 24)
+            this.count = 0;
+        return url;
+    },
+
+
     this._tileImageUrl = function(node) {
 
         var url = "";
 
-        if (this.url.indexOf("{key}") > -1) {
+        if (this.url.indexOf("{key}") > -1)
+        {
+            this.url = this._switchDomain(this.url);
             url = this.url.replace("{key}", node.key);
         }
         
@@ -50,7 +67,6 @@
 
     this.appendImage = function(node) {
             var url = this._tileImageUrl(node);
-
             
             var  img = this._createImage(node);
             
