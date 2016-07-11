@@ -10,7 +10,7 @@
   color:white;
   cursor:move;
   position:relative;
-    
+   
 }
 
 #map img {
@@ -18,6 +18,8 @@
     width: 256px;
     height:256px;
     image-rendering: optimizeSpeed; 
+    backface-visibility: hidden;
+    
 }
 
 .dot {

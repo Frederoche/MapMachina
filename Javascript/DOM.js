@@ -30,6 +30,8 @@ TileMapMachine.DOM.Mouse =
 
                 map.style.top  = y + "px";
                 map.style.left = x + "px";
+                map.style.transition = 'all 0.2s ease-out';
+                //map.style.transform = 'translateX('+x+'px)';
 
                 TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
                 

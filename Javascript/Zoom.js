@@ -30,6 +30,7 @@
         TileMapMachine.Geometry._get().style.top = this.topleftY + "px";
         TileMapMachine.Geometry._get().style.left = this.topleftX + "px";
         
+
         TileMapMachine.Geometry._updatePosition(this.topleftX, this.topleftY, TileMapMachine.zoomLevel);
     },
 
@@ -62,6 +63,7 @@
 
         TileMapMachine.Geometry._get().style.top = this.topleftY + "px";
         TileMapMachine.Geometry._get().style.left = this.topleftX + "px";
+        
 
         TileMapMachine.Geometry._updatePosition(this.topleftX, this.topleftY, TileMapMachine.zoomLevel);
     }
