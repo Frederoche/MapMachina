@@ -24,15 +24,15 @@ TileMapMachine.DOM.Mouse =
             this._newMousePosition = { x: e.clientX, y: e.clientY };
 
             if (this._selected !== null) {
-                
+
                 var y = (this._newMousePosition.y - this._mousePosition.y);
                 var x = (this._newMousePosition.x - this._mousePosition.x);
 
-                map.style.top  = y + "px";
+                map.style.top = y + "px";
                 map.style.left = x + "px";
-                
-                TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
 
+                TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
+                TileMapMachine.quadtree.traverse();
                 /*if (timeoutid) {
                     clearTimeout(timeoutid);
                     timeoutid = 0;
@@ -42,7 +42,7 @@ TileMapMachine.DOM.Mouse =
                     TileMapMachine.quadtree.traverse();
                 }, 10)};*/
             }
-        
+        }
         var mouseDown = function (e) {
             
             e.preventDefault();
