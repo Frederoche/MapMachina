@@ -18,6 +18,8 @@ TileMapMachine.DOM.Mouse =
 
         TileMapMachine.Geometry._updatePosition(topLeft.x, topLeft.y, TileMapMachine.zoomLevel);
 
+        var timeoutid = 0;
+
         var mouseMove = function(e) {
             this._newMousePosition = { x: e.clientX, y: e.clientY };
 
@@ -31,12 +33,16 @@ TileMapMachine.DOM.Mouse =
                 
                 TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
 
-                TileMapMachine.quadtree.traverse();
+                /*if (timeoutid) {
+                    clearTimeout(timeoutid);
+                    timeoutid = 0;
+                }
+
+                timeoutid = setTimeout(function() {
+                    TileMapMachine.quadtree.traverse();
+                }, 10)};*/
             }
-        }
-
         
-
         var mouseDown = function (e) {
             
             e.preventDefault();

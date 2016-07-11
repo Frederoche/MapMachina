@@ -175,10 +175,9 @@ TileMapMachine.Quadtree.prototype =
             node.type = 0;
         }
 
-        for (var i = 0; i < node.child.length; i++) {
-            
-                this.traverse(moving, zommIn, zoom, node.child[i]);
-          
+        for (var i = 0; i < node.child.length && node.key.length < zoom; i++)
+        {    
+            this.traverse(moving, zommIn, zoom, node.child[i]);
         }
     }
 };
