@@ -12,9 +12,10 @@
 
     this.zoomLevel = 1;
     this.RootNode = new TileMapMachine.Node(rootOption);
-    this.leaves = [];
+    
     this.Images = new TileMapMachine.Images(url);
     this.Viewport = new TileMapMachine.Viewport();
+
     TileMapMachine.zoomLevel = 1;
 };
 
@@ -134,8 +135,8 @@ TileMapMachine.Quadtree.prototype =
         
     },
 
-    traverse: function (moving, zommIn, zoom, node)
-    {
+    traverse: function (moving, zommIn, zoom, node) {
+        
         node = node || this.RootNode;
         zoom = zoom || TileMapMachine.zoomLevel;
         
@@ -153,8 +154,10 @@ TileMapMachine.Quadtree.prototype =
         
         if (node.key.length === zoom && !this.Viewport._isInside(node.center, node.key, node.key) && node.img !== null) {
             this.Images.removeImage(node);
+            
             node.child = [];
             node.type = 0;
+            return;
         }
 
         if (node.key.length < zoom && node.img !== null) {
@@ -172,13 +175,11 @@ TileMapMachine.Quadtree.prototype =
             node.type = 0;
         }
 
-        
-       
-        for (var i = 0; i < node.child.length; i++)
-        {
-            this.traverse(moving, zommIn, zoom, node.child[i]);
+        for (var i = 0; i < node.child.length; i++) {
+            
+                this.traverse(moving, zommIn, zoom, node.child[i]);
+          
         }
-        
     }
 };
 

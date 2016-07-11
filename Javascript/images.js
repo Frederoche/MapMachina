@@ -20,8 +20,11 @@
         if (node.img === null || node.img === undefined) {
             var img = new Image();
 
-        img.id = node.key;
-        img.style.transform = "translate3d(" + node.center.x + "px," + node.center.y + "px, 0px)";
+            img.id = node.key;
+            img.style.top = node.center.y +"px";
+            img.style.left = node.center.x +"px";
+
+        //img.style.transform = "translate3d(" + node.center.x + "px," + node.center.y + "px, 0px)";
 
         return img;
         }

@@ -16,8 +16,6 @@ TileMapMachine.DOM.Mouse =
         map.style.left = topLeft.x + "px";
         map.style.top = topLeft.y + "px";
 
-        //map.style.transform = "translate3d(" + topLeft.x + "px," + topLeft.y + "px,0px)";
-
         TileMapMachine.Geometry._updatePosition(topLeft.x, topLeft.y, TileMapMachine.zoomLevel);
 
         var mouseMove = function(e) {
@@ -25,26 +23,25 @@ TileMapMachine.DOM.Mouse =
 
             if (this._selected !== null) {
                 
-                var y = this._newMousePosition.y - this._mousePosition.y;
-                var x = this._newMousePosition.x - this._mousePosition.x;
+                var y = (this._newMousePosition.y - this._mousePosition.y);
+                var x = (this._newMousePosition.x - this._mousePosition.x);
 
                 map.style.top  = y + "px";
                 map.style.left = x + "px";
-                map.style.transition = 'all 0.2s ease-out';
-                //map.style.transform = 'translateX('+x+'px)';
-
-                TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
                 
+                TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
+
                 TileMapMachine.quadtree.traverse();
             }
         }
 
         
 
-        var mouseDown = function(e) {
+        var mouseDown = function (e) {
+            
             e.preventDefault();
             this._selected = map;
-
+            
             this._mousePosition = { x: e.clientX - this._selected.offsetLeft, y: e.clientY - this._selected.offsetTop };
 
             return false;
@@ -52,13 +49,10 @@ TileMapMachine.DOM.Mouse =
 
         var mouseUp = function(e) {
             this._selected = null;
-            
         }
 
         var mouseWheel = function (e)
         {
-            map.innerHTML = '';
-
             if (e.wheelDelta > 0) {
                 
                 TileMapMachine.zoom.zoomIn(e);
@@ -69,6 +63,7 @@ TileMapMachine.DOM.Mouse =
                 TileMapMachine.zoom.zoomOut(e);   
             }
 
+            map.innerHTML = '';
             TileMapMachine.quadtree.traverse();
         }
 
