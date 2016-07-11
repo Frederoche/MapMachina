@@ -52,7 +52,7 @@ TileMapMachine.DOM.Mouse =
 
         var mouseUp = function(e) {
             this._selected = null;
-
+            
         }
 
         var mouseWheel = function (e)

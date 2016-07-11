@@ -25,8 +25,9 @@
         this.newX = -x1 + window.innerWidth / 2;
 
         this.topleftX =  mapTopLeftBefore.x + this.newX;
-        this.topleftY =  mapTopLeftBefore.y + this.newY;
+        this.topleftY = mapTopLeftBefore.y + this.newY;
 
+        TileMapMachine.Geometry._get().style.transition = 'none';
         TileMapMachine.Geometry._get().style.top = this.topleftY + "px";
         TileMapMachine.Geometry._get().style.left = this.topleftX + "px";
         
@@ -61,6 +62,7 @@
         this.topleftX = mapTopLeftBefore.x + this.newX;
         this.topleftY = mapTopLeftBefore.y + this.newY;
 
+        TileMapMachine.Geometry._get().style.transition = 'none';
         TileMapMachine.Geometry._get().style.top = this.topleftY + "px";
         TileMapMachine.Geometry._get().style.left = this.topleftX + "px";
         
