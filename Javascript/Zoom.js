@@ -1,11 +1,33 @@
 ﻿TileMapMachine.zoom =
 {
-    topleftX: 0,
-    topleftY: 0,
-    newX: 0,
-    newY:0,
+    _topleftX: 0,
+    _topleftY: 0,
+    _newX: 0,
+    _newY: 0,
 
-    zoomIn: function (e) {
+    _panTo : function(latlng) {
+        var x = - TileMapMachine.Mercator._toPixelX(latlng.lng);
+        var y = - TileMapMachine.Mercator._toPixelY(latlng.lat);
+
+        this._newY = -y + window.innerHeight / 2;
+        this._newX = -x + window.innerWidth / 2;
+
+        this._topleftX = this._newX;
+        this._topleftY = this._newY;
+
+        TileMapMachine.Geometry._get().style.top  = this._topleftY + "px";
+        TileMapMachine.Geometry._get().style.left = this._topleftX + "px";
+
+        TileMapMachine.Geometry._updatePosition(this._topleftX, this._topleftY, TileMapMachine.zoomLevel);
+
+        TileMapMachine.quadtree.traverse();
+        TileMapMachine.Poi._update();
+    },
+
+    
+
+
+    _zoomIn: function (e) {
         TileMapMachine.zoomLevel++;
 
         var newscale = 256 * Math.pow(2, TileMapMachine.zoomLevel);
@@ -21,18 +43,18 @@
         var x1 = this._scale(mapTopLeftBefore.x, mapBottomRightBefore.x, mapTopLeftAfter.x, mapBottomRightAfter.x, e.clientX);
         var y1 = this._scale(mapTopLeftBefore.y, mapBottomRightBefore.y, mapTopLeftAfter.y, mapBottomRightAfter.y, e.clientY);
         
-        this.newY = -y1 + window.innerHeight / 2;
-        this.newX = -x1 + window.innerWidth / 2;
+        this._newY = -y1 + window.innerHeight / 2;
+        this._newX = -x1 + window.innerWidth  / 2;
 
-        this.topleftX =  mapTopLeftBefore.x + this.newX;
-        this.topleftY = mapTopLeftBefore.y + this.newY;
+        this._topleftX =  mapTopLeftBefore.x + this._newX;
+        this._topleftY =  mapTopLeftBefore.y + this._newY;
 
         TileMapMachine.Geometry._get().style.transition = 'none';
-        TileMapMachine.Geometry._get().style.top = this.topleftY + "px";
-        TileMapMachine.Geometry._get().style.left = this.topleftX + "px";
+        TileMapMachine.Geometry._get().style.top = this._topleftY + "px";
+        TileMapMachine.Geometry._get().style.left = this._topleftX + "px";
         
-
-        TileMapMachine.Geometry._updatePosition(this.topleftX, this.topleftY, TileMapMachine.zoomLevel);
+        TileMapMachine.Geometry._updatePosition(this._topleftX, this._topleftY, TileMapMachine.zoomLevel);
+        TileMapMachine.Poi._update();
     },
 
     _scale: function (min, max, a, b, x)
@@ -40,7 +62,9 @@
         return (b - a) * (x - min)/(max - min) + a;
     },
 
-    zoomOut: function (e) {
+    _zoomOut: function (e) {
+        
+
         TileMapMachine.zoomLevel--;
 
         var newscale = 256 * Math.pow(2, TileMapMachine.zoomLevel);
@@ -56,17 +80,18 @@
         var x1 = this._scale(mapTopLeftBefore.x, mapBottomRightBefore.x, mapTopLeftAfter.x, mapBottomRightAfter.x, e.clientX);
         var y1 = this._scale(mapTopLeftBefore.y, mapBottomRightBefore.y, mapTopLeftAfter.y, mapBottomRightAfter.y, e.clientY);
 
-        this.newY = -y1 + window.innerHeight / 2;
-        this.newX = -x1 + window.innerWidth / 2;
+        this._newY = -y1 + window.innerHeight / 2;
+        this._newX = -x1 + window.innerWidth / 2;
 
-        this.topleftX = mapTopLeftBefore.x + this.newX;
-        this.topleftY = mapTopLeftBefore.y + this.newY;
+        this._topleftX = mapTopLeftBefore.x + this._newX;
+        this._topleftY = mapTopLeftBefore.y + this._newY;
 
         TileMapMachine.Geometry._get().style.transition = 'none';
-        TileMapMachine.Geometry._get().style.top = this.topleftY + "px";
-        TileMapMachine.Geometry._get().style.left = this.topleftX + "px";
+        TileMapMachine.Geometry._get().style.top = this._topleftY + "px";
+        TileMapMachine.Geometry._get().style.left = this._topleftX + "px";
         
 
-        TileMapMachine.Geometry._updatePosition(this.topleftX, this.topleftY, TileMapMachine.zoomLevel);
+        TileMapMachine.Geometry._updatePosition(this._topleftX, this._topleftY, TileMapMachine.zoomLevel);
+        TileMapMachine.Poi._update();
     }
 }

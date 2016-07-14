@@ -23,13 +23,19 @@
 }
 
 .dot {
-    color: yellow;
-    width: 10px;
-    height: 10px;
-    background-color:  red;
+    color: white;
+    width: 20px;
+    height: 20px;
+    background-color: white;
     z-index: 1000000;
     position: absolute;
+    border-radius: 50%;
+    border: 10px solid black;
+    pointer-events: none;
 }
+
+
+    
 
 .key {
     width: 256px;
@@ -37,6 +43,12 @@
     border: 1px solid red;
     z-index: 1000000;
     position: absolute;
+}
+
+input[type="text"] {
+    z-index: 100000000000;
+    position: absolute;
+
 }
 
 

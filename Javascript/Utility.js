@@ -5,6 +5,7 @@
         div.className = "dot";
         div.style.top =  position.y + "px";
         div.style.left = position.x + "px";
+
         div.innerText = text || "";
         document.getElementById("dots").appendChild(div);
     },

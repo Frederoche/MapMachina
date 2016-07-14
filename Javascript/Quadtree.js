@@ -13,7 +13,7 @@
     this.zoomLevel = 1;
     this.RootNode = new TileMapMachine.Node(rootOption);
     
-    this.Images = new TileMapMachine.Images(url);
+    this.Images   = new TileMapMachine.Images(url);
     this.Viewport = new TileMapMachine.Viewport();
 
     TileMapMachine.zoomLevel = 1;
@@ -137,6 +137,7 @@ TileMapMachine.Quadtree.prototype =
 
     traverse: function (moving, zommIn, zoom, node) {
         
+
         node = node || this.RootNode;
         zoom = zoom || TileMapMachine.zoomLevel;
         

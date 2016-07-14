@@ -45,7 +45,9 @@
   <ItemGroup>
     <Content Include="Javascript\Licence.js" />
     <Content Include="Javascript\Map.js" />
+    <Content Include="Javascript\Mercator.js" />
     <Content Include="Javascript\node.js" />
+    <Content Include="Javascript\Poi.js" />
     <Content Include="Javascript\Utility.js" />
     <Content Include="Javascript\Zoom.js" />
     <None Include="Web.Debug.config">
