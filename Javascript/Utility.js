@@ -1,5 +1,29 @@
 ﻿TileMapMachine.Utility =
 {
+    _Request:function(url, callback) {
+        var request = new XMLHttpRequest();
+
+        var load = function ()
+        {
+            if (request.status === XMLHttpRequest.DONE) {
+                callback(request.responseText);
+            }
+        };
+
+
+        var error = function() {
+            callback(request.responseText);
+            console.log(request.responseText);
+        }
+
+        request.addEventListener("error", error, false);
+        request.addEventListener("load",load, false);
+
+        request.open("GET", url, true);
+        request.send();
+    },
+
+
     _appendDiv: function(position, text) {
         var div = document.createElement('div');
         div.className = "dot";
@@ -80,7 +104,5 @@
             }
             }
         }
-        
-        
     }
 }

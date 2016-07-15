@@ -49,6 +49,7 @@
     <Content Include="Javascript\node.js" />
     <Content Include="Javascript\Poi.js" />
     <Content Include="Javascript\Utility.js" />
+    <Content Include="Javascript\WMS.js" />
     <Content Include="Javascript\Zoom.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

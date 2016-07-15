@@ -140,45 +140,44 @@ TileMapMachine.Quadtree.prototype =
 
         node = node || this.RootNode;
         zoom = zoom || TileMapMachine.zoomLevel;
-        
+
         if (!this._testChildCenter(node, zoom) && node.img === null)
             return;
+        else {
+            if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img === null) {
+                this.Images.appendImage(node);
+            }
 
-        if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img ===null) {
-            this.Images.appendImage(node);
-        }
+            if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img !== null) {
+                document.getElementById("map").appendChild(node.img);
+            }
 
-        if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img !== null)
-        {
-           document.getElementById("map").appendChild(node.img);
-        }
-        
-        if (node.key.length === zoom && !this.Viewport._isInside(node.center, node.key, node.key) && node.img !== null) {
-            this.Images.removeImage(node);
-            
-            node.child = [];
-            node.type = 0;
-            return;
-        }
+            if (node.key.length === zoom && !this.Viewport._isInside(node.center, node.key, node.key) && node.img !== null) {
+                this.Images.removeImage(node);
 
-        if (node.key.length < zoom && node.img !== null) {
-            this.Images.removeImage(node);
-        }
+                node.child = [];
+                node.type = 0;
+                return;
+            }
 
-        if (node.key.length < zoom && this._testChildCenter(node, zoom) && node.child.length === 0) {
-            this._addChilds(node);
-            node.type = 1;
-        }
+            if (node.key.length < zoom && node.img !== null) {
+                this.Images.removeImage(node);
+            }
 
-        if (!this._testChildCenter(node, zoom)) {
-            this.Images.removeImage(node);
-            node.child = [];
-            node.type = 0;
-        }
+            if (node.key.length < zoom && this._testChildCenter(node, zoom) && node.child.length === 0) {
+                this._addChilds(node);
+                node.type = 1;
+            }
 
-        for (var i = 0; i < node.child.length && node.key.length < zoom; i++)
-        {    
-            this.traverse(zoom, node.child[i]);
+            if (!this._testChildCenter(node, zoom)) {
+                this.Images.removeImage(node);
+                node.child = [];
+                node.type = 0;
+            }
+
+            for (var i = 0; i < node.child.length && node.key.length < zoom; i++) {
+                this.traverse(zoom, node.child[i]);
+            }
         }
     }
 };

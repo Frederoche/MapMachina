@@ -14,6 +14,7 @@
     <script src="../Javascript/Zoom.js"></script>
     <script src="../Javascript/Poi.js"></script>
     <script src="../Javascript/DOM.js"></script>
+    <script src="../Javascript/WMS.js"></script>
 	<meta charset="utf-8" />
 </head>
 <body>
@@ -26,9 +27,10 @@
     var bingServerTileUrl = 'http://t0.tiles.virtualearth.net/tiles/a{key}.jpeg?g=854&mkt=en-US&token=Anz84uRE1RULeLwuJ0qKu5amcu5rugRXy1vKc27wUaKVyIv1SVZrUjqaOfXJJoI0';
     var osmServerTileUrl = 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png';
     var tilStammenUrl = 'http://a.tile.stamen.com/toner/{z}/{x}/{y}.png';
+    var mapnikUrl = 'http://c.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
 
-    var map = new TileMapMachine.Map(bingServerTileUrl);
+    var map = new TileMapMachine.Map(mapnikUrl);
     TileMapMachine.Poi.add({ lat: 59.9071, lng: 10.7529 });
     TileMapMachine.Poi.add({ lat: 48.8566, lng: 2.3522 });
     TileMapMachine.zoom._panTo({ lat: 59.9071, lng: 10.7529 });
