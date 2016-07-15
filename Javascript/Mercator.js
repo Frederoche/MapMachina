@@ -14,14 +14,20 @@
         return -360 / Math.PI* Math.atan(Math.exp(Math.PI * (-size - 2.0 * pixelPosition.y) / size)) + 90;
     },
 
-    _toPixelX: function (lng) {
-        var size = 256 * Math.pow(2, TileMapMachine.zoomLevel);
+    _toPixelX: function (lng, zoomLevel) {
+
+        zoomLevel = zoomLevel || TileMapMachine.zoomLevel;
+
+        var size = 256 * Math.pow(2, zoomLevel);
 
         return -lng*size/360 - size/2;
     },
 
-    _toPixelY: function (lat) {
-        var size = 256 * Math.pow(2, TileMapMachine.zoomLevel);
+    _toPixelY: function (lat, zoomLevel) {
+
+        zoomLevel = zoomLevel || TileMapMachine.zoomLevel;
+
+        var size = 256 * Math.pow(2, zoomLevel);
 
         var tmp = Math.tan(Math.PI * (90  / 360 - lat  / 360));
 

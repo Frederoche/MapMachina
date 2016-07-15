@@ -6,11 +6,11 @@
     _newY: 0,
 
     _panTo : function(latlng) {
-        var x = - TileMapMachine.Mercator._toPixelX(latlng.lng);
-        var y = - TileMapMachine.Mercator._toPixelY(latlng.lat);
+        var x = TileMapMachine.Mercator._toPixelX(latlng.lng);
+        var y = TileMapMachine.Mercator._toPixelY(latlng.lat);
 
-        this._newY = -y + window.innerHeight / 2;
-        this._newX = -x + window.innerWidth / 2;
+        this._newY = y + window.innerHeight / 2;
+        this._newX = x + window.innerWidth / 2;
 
         this._topleftX = this._newX;
         this._topleftY = this._newY;
@@ -24,8 +24,28 @@
         TileMapMachine.Poi._update();
     },
 
-    
+    _zoomTo: function (latlng, zoomLevel) {
+        //FIND POINT
+        TileMapMachine.zoomLevel = zoomLevel;
 
+        var x = TileMapMachine.Mercator._toPixelX(latlng.lng, zoomLevel);
+        var y = TileMapMachine.Mercator._toPixelY(latlng.lat, zoomLevel);
+
+        this._newY = y + window.innerHeight / 2;
+        this._newX = x + window.innerWidth / 2;
+
+        this._topleftX = this._newX;
+        this._topleftY = this._newY;
+
+        TileMapMachine.Geometry._get().style.top = this._topleftY + "px";
+        TileMapMachine.Geometry._get().style.left = this._topleftX + "px";
+        TileMapMachine.Geometry._updatePosition(this._topleftX, this._topleftY, TileMapMachine.zoomLevel);
+
+        //ZOOMIN
+        TileMapMachine.Geometry._get().innerHTML = '';
+        TileMapMachine.quadtree.traverse();
+        TileMapMachine.Poi._update();
+    },
 
     _zoomIn: function (e) {
         TileMapMachine.zoomLevel++;
@@ -50,7 +70,8 @@
         this._topleftY =  mapTopLeftBefore.y + this._newY;
 
         TileMapMachine.Geometry._get().style.transition = 'none';
-        TileMapMachine.Geometry._get().style.top = this._topleftY + "px";
+
+        TileMapMachine.Geometry._get().style.top  = this._topleftY + "px";
         TileMapMachine.Geometry._get().style.left = this._topleftX + "px";
         
         TileMapMachine.Geometry._updatePosition(this._topleftX, this._topleftY, TileMapMachine.zoomLevel);
@@ -63,8 +84,6 @@
     },
 
     _zoomOut: function (e) {
-        
-
         TileMapMachine.zoomLevel--;
 
         var newscale = 256 * Math.pow(2, TileMapMachine.zoomLevel);

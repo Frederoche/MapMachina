@@ -135,7 +135,7 @@ TileMapMachine.Quadtree.prototype =
         
     },
 
-    traverse: function (moving, zommIn, zoom, node) {
+    traverse: function (zoom, node) {
         
 
         node = node || this.RootNode;
@@ -178,7 +178,7 @@ TileMapMachine.Quadtree.prototype =
 
         for (var i = 0; i < node.child.length && node.key.length < zoom; i++)
         {    
-            this.traverse(moving, zommIn, zoom, node.child[i]);
+            this.traverse(zoom, node.child[i]);
         }
     }
 };
