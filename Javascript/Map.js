@@ -19,7 +19,7 @@ TileMapMachine.Geometry =
         this.lowerRightMap.y = this.upperLeftMap.y + newscale;
         this.lowerRightMap.x = this.upperLeftMap.x + newscale;
 
-        TileMapMachine.Utility._showImageCount();
+        //TileMapMachine.Utility._showImageCount();
     }
 }
 

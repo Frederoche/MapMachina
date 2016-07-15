@@ -17,21 +17,22 @@ TileMapMachine.DOM.Mouse =
 
         TileMapMachine.Geometry._updatePosition(topLeft.x, topLeft.y, TileMapMachine.zoomLevel);
 
-        var mouseMove = function(e) {
-            this._newMousePosition = { x: e.clientX, y: e.clientY };
+        var mouseMove = function (e) {
+                this._newMousePosition = { x: e.clientX, y: e.clientY };
 
-            if (this._selected !== null) {
-                
-                var y = (this._newMousePosition.y - this._mousePosition.y);
-                var x = (this._newMousePosition.x - this._mousePosition.x);
+                if (this._selected !== null) {
 
-                map.style.top  = y + "px";
-                map.style.left = x + "px";
+                    var y = (this._newMousePosition.y - this._mousePosition.y);
+                    var x = (this._newMousePosition.x - this._mousePosition.x);
 
-                TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
-                setTimeout(function() { TileMapMachine.quadtree.traverse(); }, 50);
-                TileMapMachine.Poi._update();
-            }
+                    map.style.top  = y + "px";
+                    map.style.left = x + "px";
+
+                    TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
+                    TileMapMachine.quadtree.traverse();
+                    TileMapMachine.Poi._update();
+                }
+            
         };
 
 

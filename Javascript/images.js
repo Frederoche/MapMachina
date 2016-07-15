@@ -71,7 +71,7 @@
     this.appendImage = function(node) {
             var url = this._tileImageUrl(node);
             
-            var  img = this._createImage(node);
+            var img = this._createImage(node);
             
             img.id = node.key;
 
