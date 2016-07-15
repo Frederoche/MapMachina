@@ -5,7 +5,8 @@
     _newX: 0,
     _newY: 0,
 
-    _panTo : function(latlng) {
+    _panTo: function (latlng) {
+
         var x = TileMapMachine.Mercator._toPixelX(latlng.lng);
         var y = TileMapMachine.Mercator._toPixelY(latlng.lat);
 
@@ -19,7 +20,7 @@
         TileMapMachine.Geometry._get().style.left = this._topleftX + "px";
 
         TileMapMachine.Geometry._updatePosition(this._topleftX, this._topleftY, TileMapMachine.zoomLevel);
-
+       
         TileMapMachine.quadtree.traverse();
         TileMapMachine.Poi._update();
     },

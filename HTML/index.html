@@ -33,7 +33,10 @@
     var map = new TileMapMachine.Map(mapnikUrl);
     TileMapMachine.Poi.add({ lat: 59.9071, lng: 10.7529 });
     TileMapMachine.Poi.add({ lat: 48.8566, lng: 2.3522 });
-    TileMapMachine.zoom._panTo({ lat: 59.9071, lng: 10.7529 });
+
+    document.onload = function() {
+        TileMapMachine.zoom._panTo({ lat: 59.9071, lng: 10.7529 });
+    }
 
 </script>
 </body>

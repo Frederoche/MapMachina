@@ -29,7 +29,7 @@ TileMapMachine.DOM.Mouse =
                 map.style.left = x + "px";
 
                 TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
-                TileMapMachine.quadtree.traverse();
+                setTimeout(function() { TileMapMachine.quadtree.traverse(); }, 50);
                 TileMapMachine.Poi._update();
             }
         };
