@@ -137,15 +137,13 @@ TileMapMachine.Quadtree.prototype =
 
     traverse: function (zoom, node) {
         
-
         node = node || this.RootNode;
         zoom = zoom || TileMapMachine.zoomLevel;
 
-        if (!this._testChildCenter(node, zoom) && node.img === null)
-            return;
-        
+            if (!this._testChildCenter(node, zoom))
+                return;
+
             if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img === null) {
-                
                 this.Images.appendImage(node);
             }
 
@@ -175,12 +173,11 @@ TileMapMachine.Quadtree.prototype =
                 node.child = [];
                 node.type = 0;
             }
-
+            
             for (var i = 0; i < node.child.length && node.key.length < zoom; i++) {
-                this.traverse(zoom, node.child[i]);
+                     this.traverse(zoom, node.child[i]);
             }
         }
-    
 };
 
 

@@ -68,7 +68,8 @@
         return url;
     },
 
-    this.appendImage = function(node) {
+    this.appendImage = function (node) {
+
             var url = this._tileImageUrl(node);
             
             var img = this._createImage(node);
