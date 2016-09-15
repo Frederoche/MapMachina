@@ -34,12 +34,13 @@ TileMapMachine.DOM.Mouse =
                     TileMapMachine.Geometry._updatePosition(x, y, TileMapMachine.zoomLevel);
 
 
-                    if(lastUpdateCall) cancelAnimationFrame(lastUpdateCall);
+                    if (lastUpdateCall)
+                        cancelAnimationFrame(lastUpdateCall);
 
                     lastUpdateCall = requestAnimationFrame(function() {
-
                         TileMapMachine.quadtree.traverse();
                     });
+
                     TileMapMachine.Poi._update();
                 }
         };
@@ -80,6 +81,7 @@ TileMapMachine.DOM.Mouse =
 
             map.innerHTML = '';
             TileMapMachine.quadtree.traverse();
+            
         };
 
         map.addEventListener("mousemove", mouseMove.bind(this), false);

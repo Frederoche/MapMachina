@@ -143,7 +143,8 @@ TileMapMachine.Quadtree.prototype =
             if (!this._testChildCenter(node, zoom))
                 return;
 
-            if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img === null) {
+            if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img === null)
+            {
                 this.Images.appendImage(node);
             }
 

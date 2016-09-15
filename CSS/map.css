@@ -14,12 +14,15 @@
 }
 
 #map img {
+    transform-style: preserve-3d;
     position:absolute;
     width: 256px;
     height:256px;
-    image-rendering: optimizeSpeed; 
+    image-rendering: optimizeSpeed;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
+    -ms-interpolation-mode: nearest-neighbor;
 }
 
 .dot {
