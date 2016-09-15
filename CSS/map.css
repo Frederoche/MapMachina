@@ -10,7 +10,7 @@
   color:white;
   cursor:move;
   position:relative;
-   
+   transform: translate3d(0, 0, 0);
 }
 
 #map img {
@@ -23,6 +23,7 @@
     -webkit-backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
     -ms-interpolation-mode: nearest-neighbor;
+    border: 0;
 }
 
 .dot {
