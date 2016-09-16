@@ -145,12 +145,12 @@ TileMapMachine.Quadtree.prototype =
 
             if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img === null)
             {
-                this.Images.appendParentImage(node);
+                //this.Images.appendParentImage(node);
                 this.Images.appendImage(node);
             }
 
             if (node.key.length === zoom && (this.Viewport._isInside(node.center, node.key, node.key)) && node.img !== null) {
-                this.Images.appendParentImage(node);
+                //this.Images.appendParentImage(node);
                 document.getElementById("map").appendChild(node.img);
             }
 

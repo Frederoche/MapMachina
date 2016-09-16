@@ -84,10 +84,25 @@ TileMapMachine.DOM.Mouse =
             
         };
 
+        var mouseDblClick = function(e)
+		{
+			
+			var nextZoomLevel = TileMapMachine.zoomLevel + 1;
+
+			if (nextZoomLevel < 18) {
+                    TileMapMachine.zoom._zoomIn(e);
+                }
+
+            map.innerHTML = '';
+            TileMapMachine.quadtree.traverse();
+
+		};
+
+		map.addEventListener("click", mouseDblClick, false);
         map.addEventListener("mousemove", mouseMove.bind(this), false);
         map.addEventListener("mouseup", mouseUp.bind(this), false);
         map.addEventListener("mousedown", mouseDown.bind(this), false);
-        map.addEventListener("mousewheel", mouseWheel.bind(this), false);
+        map.addEventListener("mousewheel", mouseWheel, false);
     }
 };
 
