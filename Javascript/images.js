@@ -17,12 +17,14 @@
 
     this._createImage = function(node, callback) 
     {
+        
+
         if (node.img === null || node.img === undefined) {
             var img = new Image();
 
             img.id = node.key;
             img.style.transform = "translate3d(" + node.center.x + "px," + node.center.y + "px, 0px)";
-
+            
             callback(img);
         }
         else
@@ -66,7 +68,34 @@
         callback(url);
     },
 
+    this.appendParentImage = function (node) {
+        
+        if (node.key[node.key.length - 1] === "0" && node.parent.img!==null) {
+            node.parent.img.className = "topLeft";
+        }
+
+        if (node.key[node.key.length - 1] === "1" && node.parent.img !== null) {
+            node.parent.img.className = "topRight";
+        }
+
+        if (node.key[node.key.length - 1] === "2" && node.parent.img !== null) {
+            node.parent.img.className = "bottomLeft";
+        }
+
+        if (node.key[node.key.length - 1] === "3" && node.parent.img !== null) {
+            node.parent.img.className = "bottomRight";
+        }
+
+        if (node.parent.img !== null) {
+             node.img = node.parent.img;
+             node.img.style.transform = "translate3d(" + node.center.x + "px," + node.center.y + "px, 0px)";
+             document.getElementById("map").appendChild(node.img);
+        }
+    }
+
     this.appendImage = function (node) {
+
+        
 
         this._tileImageUrl(node, function (url)
         {
@@ -77,14 +106,16 @@
 
                 var load = function() {
                     node.img = img;
+                    document.getElementById("map").appendChild(img);
+                    
                 };
 
                 img.addEventListener("load", load, false);
 
                 img.src = url;
-                document.getElementById("map").appendChild(img);
-            });
-
+                
+            }.bind(this));
+            
         }.bind(this));
     }
 }

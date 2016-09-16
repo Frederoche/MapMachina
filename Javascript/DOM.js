@@ -13,7 +13,7 @@ TileMapMachine.DOM.Mouse =
         var topLeft = { x: (-512 + window.innerWidth) / 2, y: (-512 + window.innerHeight) / 2 };
 
         map.style.left = topLeft.x + "px";
-        map.style.top  = topLeft.y + "px";
+        map.style.top = topLeft.y + "px";
 
         TileMapMachine.Geometry._updatePosition(topLeft.x, topLeft.y, TileMapMachine.zoomLevel);
 

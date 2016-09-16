@@ -10,7 +10,7 @@
   color:white;
   cursor:move;
   position:relative;
-   
+  -webkit-transform-style: preserve-3d;
 }
 
 #map img {
@@ -25,6 +25,30 @@
     -ms-interpolation-mode: nearest-neighbor;
     border: 0;
 }
+
+
+.topLeft{
+    border: 2px solid red;
+    left: 0;
+    clip: rect(0px, 128px, 0px, 128px);
+}
+
+.topRight {
+    left: 128px;
+    clip: rect(128px, 256px, 0px, 128px);
+}
+
+
+.bottomLeft{
+    left: 0;
+    clip: rect(0px, 128px, 128px, 256px);
+}
+
+.bottomRight{
+    left: 0;
+    clip: rect(128px, 256px, 128px, 256px);
+}
+
 
 .dot {
     color: white;
