@@ -7,8 +7,10 @@
         this._poiList.push(poiOption);
     },
 
-    _update: function ()
-    {
+    _update: function () {
+        if (!document.getElementById("dots"))
+            return;
+
         document.getElementById("dots").innerHTML = '';
 
         for (var i = 0; i < this._poiList.length; i++) {

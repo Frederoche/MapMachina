@@ -65,8 +65,9 @@ TileMapMachine.DOM.Mouse =
             var nextZoomLevel = TileMapMachine.zoomLevel + 1;
             var previousZoomLevel = TileMapMachine.zoomLevel - 1;
 
+            var delta = e.wheelDelta ? e.wheelDelta : -e.detail;
 
-            if (e.wheelDelta > 0)
+            if (delta > 0)
             {
                 if (nextZoomLevel < 18) {
                     TileMapMachine.zoom._zoomIn(e);
@@ -78,31 +79,17 @@ TileMapMachine.DOM.Mouse =
                     TileMapMachine.zoom._zoomOut(e);
                 }
             }
-
+            
             map.innerHTML = '';
             TileMapMachine.quadtree.traverse();
             
         };
 
-        var mouseDblClick = function(e)
-		{
-			
-			var nextZoomLevel = TileMapMachine.zoomLevel + 1;
-
-			if (nextZoomLevel < 18) {
-                    TileMapMachine.zoom._zoomIn(e);
-                }
-
-            map.innerHTML = '';
-            TileMapMachine.quadtree.traverse();
-
-		};
-
-		map.addEventListener("click", mouseDblClick, false);
         map.addEventListener("mousemove", mouseMove.bind(this), false);
         map.addEventListener("mouseup", mouseUp.bind(this), false);
         map.addEventListener("mousedown", mouseDown.bind(this), false);
         map.addEventListener("mousewheel", mouseWheel, false);
+        window.addEventListener('DOMMouseScroll', mouseWheel, false);
     }
 };
 
