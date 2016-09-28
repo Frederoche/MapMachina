@@ -69,7 +69,7 @@ TileMapMachine.DOM.Mouse =
 
             if (delta > 0)
             {
-                if (nextZoomLevel < 18) {
+                if (nextZoomLevel < 16) {
                     TileMapMachine.zoom._zoomIn(e);
                 }
             }
