@@ -1,6 +1,6 @@
 #MapMachina
 
-##
+
 <img src="https://github.com/Frederoche/MapMachina/blob/master/map.png" width=300>
 ##
 
