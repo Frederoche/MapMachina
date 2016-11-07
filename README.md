@@ -11,4 +11,4 @@ Program written in pure javascript (without any libraries) to view a map from a 
 - It only supports raster tiles for the moment.
 
 #License
- https://opensource.org/licenses/MIT
+ https://github.com/Frederoche/MapMachina/blob/master/Licence.js
