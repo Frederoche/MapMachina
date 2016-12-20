@@ -9,6 +9,11 @@ Program written in pure javascript (without any libraries) to view a map from a 
 - The map viewer support at the momemnt 16 zoom levels on IE, Firefox, Edge, Opera and Chrome.
 - Added recently poi support, panTo and zoomTo functions.
 - It only supports raster tiles for the moment.
+##
+
+Run node app.js and browse to http://localhost:8000
+
+
 
 #License
  https://github.com/Frederoche/MapMachina/blob/master/Licence.js
