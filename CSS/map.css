@@ -19,8 +19,8 @@
 #map img {
     transform-style: preserve-3d;
     position:absolute;
-    width: 256px;
-    height:256px;
+    width: 257px;
+    height:257px;
     image-rendering: optimizeSpeed;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
