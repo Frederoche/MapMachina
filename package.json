@@ -1,19 +1,20 @@
 {
-  "name": "mapmachina",
-  "version": "1.0.0",
-  "description": "<img src=\"https://github.com/Frederoche/MapMachina/blob/master/map.png\" width=300>\r ##",
-  "main": "Licence.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Frederoche/MapMachina.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Frederoche/MapMachina/issues"
-  },
-  "homepage": "https://github.com/Frederoche/MapMachina#readme"
+    "name": "mapmachina",
+    "version": "1.0.0",
+    "description": "<img src=\"https://github.com/Frederoche/MapMachina/blob/master/map.png\" width=300>\r ##",
+    "main": "Licence.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Frederoche/MapMachina.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Frederoche/MapMachina/issues"
+    },
+    "homepage": "https://github.com/Frederoche/MapMachina#readme"
 }
