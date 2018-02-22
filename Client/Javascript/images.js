@@ -41,9 +41,7 @@
             url = TileMapMachine.Utility._switchDomain(url);
             this.count = 0;
         }
-
-        //if (this.count > 24)
-            
+    
         return url;
     },
 
@@ -102,15 +100,24 @@
             {
                 img.id = node.key;
 
-                var load = function() {
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', url, true);
+                xhr.responseType = "blob";
+                
+                var load = function() 
+                {
+                    var urlCreator = window.URL || window.webkitURL;
+                    var blobUrl = urlCreator.createObjectURL(this.response);
+                    img.src = blobUrl;
                     node.img = img;
                     document.getElementById("map").appendChild(img);
+                    
                 };
 
-                img.addEventListener("load", load, false);
+                xhr.addEventListener("load", load, false);
+                xhr.send();
 
-                img.src = url;
-                
             }.bind(this));
             
         }.bind(this));
