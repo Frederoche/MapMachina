@@ -35,14 +35,15 @@
 
     this._switchDomain = function(url)
     {
-        if (this.count % 5 === 0) {
-            url = TileMapMachine.Utility._switchDomain(url);
-        }
-
         this.count++;
 
-        if (this.count > 24)
+        if (this.count % 5 === 0) {
+            url = TileMapMachine.Utility._switchDomain(url);
             this.count = 0;
+        }
+
+        //if (this.count > 24)
+            
         return url;
     },
 
@@ -95,19 +96,15 @@
 
     this.appendImage = function (node) {
 
-        
-
         this._tileImageUrl(node, function (url)
         {
             this._createImage(node, function (img)
             {
-
                 img.id = node.key;
 
                 var load = function() {
                     node.img = img;
                     document.getElementById("map").appendChild(img);
-                    
                 };
 
                 img.addEventListener("load", load, false);

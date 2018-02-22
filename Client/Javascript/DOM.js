@@ -86,7 +86,7 @@ TileMapMachine.DOM.Mouse =
         };
 
         map.addEventListener("mousemove", mouseMove.bind(this), false);
-        map.addEventListener("mouseup", mouseUp.bind(this), false);
+        document.addEventListener("mouseup", mouseUp.bind(this), false);
         map.addEventListener("mousedown", mouseDown.bind(this), false);
         map.addEventListener("mousewheel", mouseWheel, false);
         window.addEventListener('DOMMouseScroll', mouseWheel, false);
