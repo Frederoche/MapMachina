@@ -1,4 +1,6 @@
-﻿TileMapMachine.Node = function(option) {
+﻿TileMapMachine.Node = class Node {
+ constructor(option)
+ {
     this.key = option.key;
     this.center = option.center;
     this.type = option.type;
@@ -6,5 +8,6 @@
     this.child = [];
     this.zoom = option.zoom;
     this.img = null;
+    }
 };
 

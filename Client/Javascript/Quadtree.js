@@ -180,7 +180,7 @@
             if (node.key.length < zoom)
             {
                 node.child.forEach(function(val) {
-                      this.traverse(zoom, val);
+                      await  this.traverse(zoom, val);
                 }.bind(this));
             }
 
