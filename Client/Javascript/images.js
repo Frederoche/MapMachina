@@ -1,10 +1,13 @@
-﻿TileMapMachine.Images = function(url) {
+﻿TileMapMachine.Images = class Images {
 
-    this.img = {},
-    this.url = url,
-    this.count = 0,
+    constructor(url)
+    {
+        this.img = {};
+        this.url = url;
+        this.count = 0;
+    }
     
-    this.removeImage = function (node)
+    removeImage  (node)
     {
         if (node.img !== undefined) {
             
@@ -13,9 +16,9 @@
             if(img!==null)
                 document.getElementById('map').removeChild(img);
         }
-    },
+    }
 
-    this._createImage = function(node, callback) 
+    async #createImage (node, callback) 
     {
         
 
@@ -25,15 +28,15 @@
             img.id = node.key;
             img.style.transform = "translate3d(" + node.center.x + "px," + node.center.y + "px, 0px)";
             
-            callback(img);
+            await callback(img);
         }
         else
         {
-            callback(node.img);
+            await callback(node.img);
         }
-    },
+    }
 
-    this._switchDomain = function(url)
+    #switchDomain (url)
     {
         this.count++;
 
@@ -43,16 +46,16 @@
         }
     
         return url;
-    },
+    }
 
 
-    this._tileImageUrl = function(node, callback) {
+    async #tileImageUrl (node, callback) {
 
         var url;
 
         if (this.url.indexOf("{key}") > -1)
         {
-            this.url = this._switchDomain(this.url);
+            this.url = this.#switchDomain(this.url);
             url = this.url.replace("{key}", node.key);
         }
         
@@ -64,10 +67,10 @@
             url = url.replace("{z}", xyz.z);
         }
         
-        callback(url);
-    },
+        await callback(url);
+    }
 
-    this.appendParentImage = function (node) {
+     appendParentImage (node) {
         
         if (node.key[node.key.length - 1] === "0" && node.parent.img!==null) {
             node.parent.img.className = "topLeft";
@@ -92,34 +95,21 @@
         }
     }
 
-    this.appendImage = function (node) {
+     async appendImage (node) {
 
-        this._tileImageUrl(node, function (url)
+        await this.#tileImageUrl(node,   async(url) =>
         {
-            this._createImage(node, function (img)
+            await this.#createImage(node,  async (img) =>
             {
                 img.id = node.key;
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', url, true);
-                xhr.responseType = "blob";
                 
-                var load = function() 
-                {
-                    var urlCreator = window.URL || window.webkitURL;
-                    var blobUrl = urlCreator.createObjectURL(this.response);
-                    img.src = blobUrl;
-                    node.img = img;
-                    document.getElementById("map").appendChild(img);
+                var resp = await fetch(url).then(resp => { 
                     
-                };
-
-                xhr.addEventListener("load", load, false);
-                xhr.send();
-
-            }.bind(this));
+                    img.src = resp.url;
+                    node.img = img;
+                    document.getElementById("map").appendChild(img);});
+            });
             
-        }.bind(this));
+        });
     }
 }

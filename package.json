@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/Frederoche/MapMachina#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.18.1"
   }
 }
