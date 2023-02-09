@@ -19,4 +19,3 @@ Run node app.js and browse to http://localhost:8000
 #License
 <a href="https://github.com/Frederoche/MapMachina/blob/master/Licence.js">License</a>
 
-<a href="https://secret-ravine-37243.herokuapp.com/">Demo</a>
